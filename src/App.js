@@ -8,29 +8,37 @@ import OurWork from "./pages/OurWork";
 import MovieDetail from "./pages/MovieDetail";
 //import components
 import Nav from "./components/Nav";
-
 //router
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, useLocation } from "react-router-dom";
+//animations
+import { AnimatePresence } from "framer-motion";
 
 function App() {
+  //obtenemos el key y la ubicacion de donde estamos- en verdad esta el objeto entero en esa variable
+  const location = useLocation();
+  //hay que envolver toda la pagina que quiere animar con AnimatePresence, que detecta cuando hay un cambio en la pagina
+  //despues hay que pasar el key para el switch, porque ahi el AnimatePresence será avisado cuando hay un cambio de pagina y pondrá las animaciones
+  //el exitBeforeEnter es para que espere que el otro componente se vaya antes de empezar animando el nuevo
   return (
     <div className="App">
       <GlobalStyle />
       <Nav />
-      <Switch>
-        <Route path="/" exact>
-          <AboutUs />
-        </Route>
-        <Route path="/work" exact>
-          <OurWork />
-        </Route>
-        <Route path="/work/:id">
-          <MovieDetail />
-        </Route>
-        <Route path="/contact">
-          <ContactUs />
-        </Route>
-      </Switch>
+      <AnimatePresence exitBeforeEnter>
+        <Switch location={location} key={location.pathname}>
+          <Route path="/" exact>
+            <AboutUs />
+          </Route>
+          <Route path="/work" exact>
+            <OurWork />
+          </Route>
+          <Route path="/work/:id">
+            <MovieDetail />
+          </Route>
+          <Route path="/contact">
+            <ContactUs />
+          </Route>
+        </Switch>
+      </AnimatePresence>
     </div>
   );
 }

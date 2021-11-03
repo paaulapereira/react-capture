@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
 import { MovieState } from "../movieState";
+//import animations
+import { motion } from "framer-motion";
+import { pageAnimation } from "../animation";
 
 const MovieDetail = () => {
   //creamos el historico y obtenemos la url
@@ -22,7 +25,12 @@ const MovieDetail = () => {
     <>
       {/* condificon para solo cargar los datos cuando el movie este disponible */}
       {movie && (
-        <Details>
+        <Details
+          variants={pageAnimation}
+          initial="hidden"
+          animate="show"
+          exit="exit"
+        >
           <HeadLine>
             <h2>{movie.title}</h2>
             <img src={movie.mainImg} alt="movie" />
@@ -46,7 +54,7 @@ const MovieDetail = () => {
 };
 
 //styled components
-const Details = styled.div`
+const Details = styled(motion.div)`
   color: white;
 `;
 
