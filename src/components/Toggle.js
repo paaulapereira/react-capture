@@ -4,7 +4,7 @@ import React, { useState } from "react";
 //pasamos de prop todo lo que hay dentro del componente toggle
 const Toggle = ({ children, title }) => {
   //states
-  const [toggle, setToggle] = useState(true);
+  const [toggle, setToggle] = useState(false);
   return (
     <motion.div layout className="question" onClick={() => setToggle(!toggle)}>
       <motion.h4 layout>{title}</motion.h4>

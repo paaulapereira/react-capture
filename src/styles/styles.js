@@ -1,8 +1,9 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
 //styled components
 //creamos el componente que queremos y lo utilizamos para estilos
-export const About = styled.div`
+export const About = styled(motion.div)`
   //ahora el about va a ser un div
   min-height: 90vh;
   display: flex;

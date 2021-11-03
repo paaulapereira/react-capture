@@ -8,10 +8,21 @@ import home2 from "../img/home2.png";
 //import styles
 import { About, Description, Image } from "../styles/styles";
 import styled from "styled-components";
+import { scrollReveal } from "../animation";
+//importar componentes
+import { useScroll } from "./useScroll";
 
 const ServicesSection = () => {
+  //llamamos al hook que he creado y definimos la referencia a la pagina y los controles para la animacion
+  const [element, controls] = useScroll();
+  //el animate={controls} significa que los controles que hemos creado (que si la vista existe es show y si no hide) serán responsables de la animación
   return (
-    <Services>
+    <Services
+      variants={scrollReveal}
+      animate={controls}
+      initial="hidden"
+      ref={element}
+    >
       <Description>
         <h2>
           Hight <span>quality </span>services
