@@ -33,8 +33,8 @@ const AboutSection = () => {
       <Image>
         <motion.img
           src={home1}
-          variants={photoAnim}
           alt="guy with the camera"
+          variants={photoAnim}
         />
       </Image>
       <Wave />

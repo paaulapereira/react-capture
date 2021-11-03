@@ -21,7 +21,8 @@ const Wave = () => {
     </WaveSvg>
   );
 };
-
+//y el motion.path es para animar el camino que hace la linea
+//ponemos los estilos para que la linea quede detrás de todo
 const WaveSvg = styled.svg`
   position: absolute;
   left: 0;
